@@ -1,3 +1,7 @@
+use std::mem;
+use rand::thread_rng;
+use rand::Rng;
+
 fn main() {
     let mut _x = "5";
     println!("x is: {}", _x);
@@ -26,4 +30,20 @@ fn main() {
     println!("tuple_two is: {}", _tuple_two.2);
     _tuple_two.2 = 2;
     println!("tuple_two is mutated: {:?}", _tuple_two);
+
+    //array: fixed length, fixed type, fixed size
+    //would be int32 by default
+    let arr = [1,2,3,4];
+    let mut ys: [i32; 100] = [1; 100];
+    ys[26] = 33;
+
+    for i in 0..ys.len() {
+      //to use random number add dependency to Cargo.toml
+      //ys[i] = rand::random();
+      let mut rng = thread_rng();
+      let y: i32 = rng.gen_range(0, 1000);
+      ys[i] = y as i32;
+    }
+
+    println!("arr is: {:?}", ys);
 }
